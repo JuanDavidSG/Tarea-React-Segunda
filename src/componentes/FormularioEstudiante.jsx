@@ -23,7 +23,14 @@ export const FormularioEstudiante = ({ agregar, estudianteEditar, actualizarEstu
             nombre: nombre,
             semestre: semestre
         }
-        agregar(estudiante)
+
+        if (editando) {
+            actualizarEstudiante(estudiante);
+            setEditando(false);
+        } else {
+            agregar(estudiante);
+        }
+
         setId("");
         setNombre("");
         setSemestre("");
@@ -34,7 +41,7 @@ export const FormularioEstudiante = ({ agregar, estudianteEditar, actualizarEstu
             <form onSubmit={guardarEstudiante}>
                 <div className="form-group ">
                     <label htmlFor="id">ID Estudiante</label>
-                    <input type="id" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} />
+                    <input type="id" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} disabled={editando} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="nombre">Nombre</label>
@@ -44,8 +51,12 @@ export const FormularioEstudiante = ({ agregar, estudianteEditar, actualizarEstu
                     <label htmlFor="semestre">Semestre</label>
                     <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
                 </div>
-
-                <button type="submit" className="btn btn-primary">Registrar</button>
+                <br/>
+                <button type="submit" class="btn btn-success">{editando ? "Actualizar" : "Registrar"}</button>
+                
+                {editando &&
+                    <button type="button" className="btn btn-secondary ml-3" onClick={() => setEditando(false)}>Cancelar</button>
+                }
             </form>
         </>
     )
