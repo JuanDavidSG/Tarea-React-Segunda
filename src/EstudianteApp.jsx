@@ -14,7 +14,7 @@ export const EstudiantesApp = () => {
         if (existeEstudiante) {
             window.alert("¡El estudiante con este ID ya existe!");
         } else {
-            
+
             setEstudiantes([...estudiantes, estudiante]);
         }
     }
@@ -44,14 +44,14 @@ export const EstudiantesApp = () => {
 
     return (
         <>
-            <FormularioEstudiante 
-                agregar={agregarEstudiante} 
-                setBusqueda={setBusqueda} 
+            <FormularioEstudiante
+                agregar={agregarEstudiante}
+                setBusqueda={setBusqueda}
                 estudianteEditar={estudianteEditar}
                 actualizarEstudiante={actualizarEstudiante}
             />
-            <TablaEstudiante 
-                listaEstudiantes={listaEstudiantesFiltrados} 
+            <TablaEstudiante
+                listaEstudiantes={listaEstudiantesFiltrados}
                 eliminarEstudiante={eliminarEstudiante}
                 editarEstudiante={editarEstudiante}
             />

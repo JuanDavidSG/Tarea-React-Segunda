@@ -51,9 +51,9 @@ export const FormularioEstudiante = ({ agregar, estudianteEditar, actualizarEstu
                     <label htmlFor="semestre">Semestre</label>
                     <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
                 </div>
-                <br/>
+                <br />
                 <button type="submit" class="btn btn-success">{editando ? "Actualizar" : "Registrar"}</button>
-                
+
                 {editando &&
                     <button type="button" className="btn btn-secondary ml-3" onClick={() => setEditando(false)}>Cancelar</button>
                 }

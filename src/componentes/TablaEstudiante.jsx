@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante, eliminarEstudiante}) => {
+export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante, eliminarEstudiante }) => {
 
     const [filtroNombre, setFiltroNombre] = useState("");
 
@@ -11,7 +11,7 @@ export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante, eliminarEs
     };
 
     const estudiantesFiltrados = filtrarEstudiantes(listaEstudiantes, filtroNombre);
-    
+
     return (
         <>
             <br />
@@ -36,13 +36,13 @@ export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante, eliminarEs
                                     onClick={() => editarEstudiante(estudiante)}
                                 >
                                     Editar
-                                </button>  
+                                </button>
                                 <button
                                     className="btn btn-danger"
                                     onClick={() => eliminarEstudiante(estudiante.id)}
                                 >
                                     Eliminar
-                                </button>                              
+                                </button>
                             </td>
                         </tr>
                     ))}
