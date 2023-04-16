@@ -18,10 +18,25 @@ export const EstudiantesApp = () => {
         }
     }
 
+    const editarEstudiante = (estudiante) => {
+        setEstudianteEditar(estudiante);
+    }
+
+
+    const actualizarEstudiante = (estudiante) => {
+        const indice = estudiantes.findIndex((est) => est.id === estudiante.id);
+        const nuevosEstudiantes = [...estudiantes];
+        nuevosEstudiantes[indice] = estudiante;
+        setEstudiantes(nuevosEstudiantes);
+        console.log(nuevosEstudiantes)
+        setEstudianteEditar(null);
+    };
+
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
-            <TablaEstudiante listaEstudiantes={estudiantes} />
+            <FormularioEstudiante agregar={agregarEstudiante} estudianteEditar={estudianteEditar}
+                actualizarEstudiante={actualizarEstudiante} />
+            <TablaEstudiante listaEstudiantes={estudiantes} editarEstudiante={editarEstudiante} />
         </>
     )
 }
