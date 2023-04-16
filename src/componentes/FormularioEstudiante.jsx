@@ -41,7 +41,7 @@ export const FormularioEstudiante = ({ agregar, estudianteEditar, actualizarEstu
             <form onSubmit={guardarEstudiante}>
                 <div className="form-group ">
                     <label htmlFor="id">ID Estudiante</label>
-                    <input type="id" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} disabled={editando} />
+                    <input type="number" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} disabled={editando} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="nombre">Nombre</label>
@@ -49,7 +49,7 @@ export const FormularioEstudiante = ({ agregar, estudianteEditar, actualizarEstu
                 </div>
                 <div className="form-group">
                     <label htmlFor="semestre">Semestre</label>
-                    <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
+                    <input type="number" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
                 </div>
                 <br />
                 <button type="submit" class="btn btn-success">{editando ? "Actualizar" : "Registrar"}</button>
