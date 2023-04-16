@@ -18,6 +18,15 @@ export const EstudiantesApp = () => {
         }
     }
 
+    const eliminarEstudiante = (id) => {
+        const isEliminar = window.confirm(`Desea eliminar el estudiante con id: ${id}`)
+
+        if (isEliminar) {
+            const filterEstudiantes = estudiantes.filter(est => est.id !== id)
+            setEstudiantes(filterEstudiantes);
+        }
+    }
+
     const editarEstudiante = (estudiante) => {
         setEstudianteEditar(estudiante);
     }
