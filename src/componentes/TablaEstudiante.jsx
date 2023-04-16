@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante, eliminarEstudiante}) => {
+export const TablaEstudiante = ({ listaEstudiantes, eliminarEstudiante, editarEstudiante}) => {
 
     const [filtroNombre, setFiltroNombre] = useState("");
 
@@ -15,6 +15,16 @@ export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante, eliminarEs
     return (
         <>
             <br />
+            <div className="mb-3">
+                <label htmlFor="Buscar" class="text-danger">Buscar:</label>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Buscar por nombre"
+                    value={filtroNombre}
+                    onChange={(e) => setFiltroNombre(e.target.value)}
+                />
+            </div>
             <table class="table table-dark">
                 <thead >
                     <tr>
@@ -36,13 +46,13 @@ export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante, eliminarEs
                                     onClick={() => editarEstudiante(estudiante)}
                                 >
                                     Editar
-                                </button>  
+                                </button>
                                 <button
                                     className="btn btn-danger"
                                     onClick={() => eliminarEstudiante(estudiante.id)}
                                 >
                                     Eliminar
-                                </button>                              
+                                </button>
                             </td>
                         </tr>
                     ))}
