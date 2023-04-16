@@ -1,10 +1,22 @@
-export const TablaEstudiante = ({ listaEstudiantes }) => {
+import { useState } from "react"
 
+export const TablaEstudiante = ({ listaEstudiantes, editarEstudiante}) => {
+
+    const [filtroNombre, setFiltroNombre] = useState("");
+
+    const filtrarEstudiantes = (estudiantes, filtroNombre) => {
+        return estudiantes.filter((estudiante) =>
+            estudiante.nombre.toLowerCase().includes(filtroNombre.toLowerCase())
+        );
+    };
+
+    const estudiantesFiltrados = filtrarEstudiantes(listaEstudiantes, filtroNombre);
     
     return (
         <>
-            <table className="table">
-                <thead>
+            <br />
+            <table class="table table-dark">
+                <thead >
                     <tr>
                         <th scope="col">Id Estudiante</th>
                         <th scope="col">Nombre</th>
@@ -13,14 +25,21 @@ export const TablaEstudiante = ({ listaEstudiantes }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        listaEstudiantes.map((estudiante) => <tr key={estudiante.id}>
+                    {estudiantesFiltrados.map((estudiante) => (
+                        <tr key={estudiante.id}>
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            
-                        </tr>)
-                    }
+                            <td>
+                                <button
+                                    className="btn btn-info me-2"
+                                    onClick={() => editarEstudiante(estudiante)}
+                                >
+                                    Editar
+                                </button>                                
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
