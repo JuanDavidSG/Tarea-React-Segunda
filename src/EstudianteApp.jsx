@@ -14,6 +14,7 @@ export const EstudiantesApp = () => {
         if (existeEstudiante) {
             window.alert("¡El estudiante con este ID ya existe!");
         } else {
+            
             setEstudiantes([...estudiantes, estudiante]);
         }
     }
