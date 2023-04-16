@@ -1,9 +1,19 @@
 import { useState } from "react"
 
-export const FormularioEstudiante = ({ agregar }) => {
+export const FormularioEstudiante = ({ agregar, estudianteEditar, actualizarEstudiante }) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
+    const [editando, setEditando] = useState(false);
+
+    useEffect(() => {
+        if (estudianteEditar) {
+            setEditando(true);
+            setId(estudianteEditar.id);
+            setNombre(estudianteEditar.nombre);
+            setSemestre(estudianteEditar.semestre);
+        }
+    }, [estudianteEditar]);
 
     const guardarEstudiante = (event) => {
         event.preventDefault();
