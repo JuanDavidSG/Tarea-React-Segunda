@@ -19,6 +19,15 @@ export const EstudiantesApp = () => {
         }
     }
 
+    const eliminarEstudiante = (id) => {
+        const isEliminar = window.confirm(`Desea eliminar el estudiante con id: ${id}`)
+
+        if (isEliminar) {
+            const filterEstudiantes = estudiantes.filter(est => est.id !== id)
+            setEstudiantes(filterEstudiantes);
+        }
+    }
+
     const editarEstudiante = (estudiante) => {
         setEstudianteEditar(estudiante);
     }
@@ -35,9 +44,17 @@ export const EstudiantesApp = () => {
 
     return (
         <>
-            <FormularioEstudiante agregar={agregarEstudiante} estudianteEditar={estudianteEditar}
-                actualizarEstudiante={actualizarEstudiante} />
-            <TablaEstudiante listaEstudiantes={estudiantes} editarEstudiante={editarEstudiante} />
+            <FormularioEstudiante 
+                agregar={agregarEstudiante} 
+                setBusqueda={setBusqueda} 
+                estudianteEditar={estudianteEditar}
+                actualizarEstudiante={actualizarEstudiante}
+            />
+            <TablaEstudiante 
+                listaEstudiantes={listaEstudiantesFiltrados} 
+                eliminarEstudiante={eliminarEstudiante}
+                editarEstudiante={editarEstudiante}
+            />
         </>
     )
 }
