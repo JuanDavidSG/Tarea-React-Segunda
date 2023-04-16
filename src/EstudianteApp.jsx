@@ -4,15 +4,18 @@ import { TablaEstudiante } from "./componentes/TablaEstudiante";
 
 
 
-//<ListaEstudiantes lista={estudiantes}/>
-
 export const EstudiantesApp = () => {
 
     const [estudiantes, setEstudiantes] = useState([]);
-    console.log(estudiantes);
+    const [estudianteEditar, setEstudianteEditar] = useState(null);
 
     const agregarEstudiante = (estudiante) => {
-        setEstudiantes([...estudiantes, estudiante])
+        const existeEstudiante = estudiantes.some((element) => element.id === estudiante.id);
+        if (existeEstudiante) {
+            window.alert("¡Según su ID este estudiante ya existe!");
+        } else {
+            setEstudiantes([...estudiantes, estudiante]);
+        }
     }
 
     return (
